@@ -20,12 +20,20 @@ app.post("/todos", async (req, res) => {
       [description]
     );
     res.json(newTodo.rows[0]);
-  } catch (err) {
+  } catch (error) {
     console.error(err.message);
   }
 });
 
 // Get all todos
+app.get("/todos", async (req, res) => {
+  try {
+    const allTodos = await pool.query("SELECT * FROM todo");
+    res.json(allTodos.rows);
+  } catch (error) {
+    console.error(err.message);
+  }
+});
 
 app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
