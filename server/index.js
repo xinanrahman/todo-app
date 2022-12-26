@@ -48,6 +48,22 @@ app.get("/todos/:id", async (req, res) => {
   }
 });
 
+// Update a todo
+app.put("/todos/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { description } = req.body;
+
+    const updatedTodo = await pool.query(
+      "UPDATE todo SET description = $1 WHERE todo_id = $2",
+      [description, id]
+    );
+    res.json("ToDo was successfully updated!");
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 app.listen(PORT, () => {
   console.log("Server is running on port " + PORT);
 });
