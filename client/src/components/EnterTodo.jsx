@@ -16,6 +16,7 @@ function EnterTodo() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+      console.log(response);
     } catch (err) {
       console.error(err.message);
     }
@@ -26,16 +27,17 @@ function EnterTodo() {
         {" "}
         Your Personal ToDo List
       </h1>
-      <form className="input-group justify-center mt-5">
+      <form
+        className="input-group justify-center mt-5"
+        onSubmit={handleOnSubmit}
+      >
         <input
           type="text"
           className="form-control"
           value={description}
           onChange={handleOnChange}
         ></input>
-        <button className="btn btn-success" onSubmit={handleOnSubmit}>
-          Enter
-        </button>
+        <button className="btn btn-success">Enter</button>
       </form>
     </>
   );
