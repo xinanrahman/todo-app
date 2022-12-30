@@ -23,9 +23,9 @@ function EnterTodo() {
   };
   return (
     <>
-      <h1 className="text-center text-4xl font-bold mt-5">
+      <h1 className="text-center text-4xl font-bold mt-10 py-10">
         {" "}
-        Your Personal ToDo List
+        what do you want to do today?
       </h1>
       <form
         className="input-group justify-center mt-5"
@@ -33,11 +33,12 @@ function EnterTodo() {
       >
         <input
           type="text"
-          className="form-control"
+          className="form-control w-full max-w-xs pl-4"
+          placeholder="i want to..."
           value={description}
           onChange={handleOnChange}
         ></input>
-        <button className="btn btn-success">Enter</button>
+        <button className="btn btn-success lowercase">enter</button>
       </form>
     </>
   );
