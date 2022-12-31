@@ -1,11 +1,11 @@
 import EnterTodo from "./components/EnterTodo";
-import EditTodo from "./components/EditTodo";
+import ListTodos from "./components/ListTodos";
 
 function App() {
   return (
     <>
       <EnterTodo />
-      <EditTodo />
+      <ListTodos />
     </>
   );
 }
