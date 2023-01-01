@@ -1,10 +1,24 @@
 import React, { useState } from "react";
 
-function EditTodo() {
+function EditTodo({ todo }) {
   const [description, setDescription] = useState("");
 
   const handleOnChange = (e) => {
-    setDescription(e.target.value());
+    setDescription(e.target.value);
+  };
+
+  const handleOnClick = async (todo_id) => {
+    try {
+      const body = { description };
+      const response = await fetch(`http://localhost:5000/todos/${todo_id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      window.location.reload();
+    } catch (err) {
+      console.error(err.message);
+    }
   };
 
   return (
@@ -31,7 +45,10 @@ function EditTodo() {
           </div>
 
           <div className="modal-action">
-            <button className="btn btn-sm btn-outline btn-success lowercase">
+            <button
+              className="btn btn-sm btn-outline btn-success lowercase"
+              onClick={() => handleOnClick(todo.todo_id)}
+            >
               submit
             </button>
             <label

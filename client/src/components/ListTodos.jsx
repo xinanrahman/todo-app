@@ -48,7 +48,7 @@ function ListTodos() {
                 <tr key={todo.todo_id}>
                   <td>{todo.description}</td>
                   <td>
-                    <EditTodo></EditTodo>
+                    <EditTodo todo={todo}></EditTodo>
                   </td>
                   <td>
                     <button
