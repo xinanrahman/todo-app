@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 function ListTodos() {
+  const [todos, setTodos] = useState([]);
+
   const getTodos = async () => {
     try {
       const response = await fetch("http://localhost:5000/todos");
       const jsonData = await response.json();
-      console.log(jsonData);
+      setTodos(jsonData);
     } catch (err) {
       console.error(err.message);
     }
@@ -14,6 +16,9 @@ function ListTodos() {
   useEffect(() => {
     getTodos();
   }, []);
+
+  console.log(todos);
+
   return (
     <>
       <div className="overflow-x-auto flex justify-center">
@@ -26,7 +31,18 @@ function ListTodos() {
               <th className="lowercase">delete</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            {todos.map((todo) => {
+              return (
+                <tr key={todo.todo_id}>
+                  <th>{todo.todo_id}</th>
+                  <td>{todo.description}</td>
+                  <td>Edit</td>
+                  <td>Delete</td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </div>
     </>
