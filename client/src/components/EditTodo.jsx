@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function EditTodo({ todo }) {
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState(todo.description);
 
   const handleOnChange = (e) => {
     setDescription(e.target.value);
@@ -24,13 +24,17 @@ function EditTodo({ todo }) {
   return (
     <>
       <label
-        htmlFor="my-modal"
+        htmlFor={`id${todo.todo_id}`}
         className="btn btn-outline btn-sm btn-success lowercase"
       >
         edit
       </label>
 
-      <input type="checkbox" id="my-modal" className="modal-toggle" />
+      <input
+        type="checkbox"
+        id={`id${todo.todo_id}`}
+        className="modal-toggle"
+      />
       <div className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg text-center">edit your todo!</h3>
@@ -52,7 +56,7 @@ function EditTodo({ todo }) {
               submit
             </button>
             <label
-              htmlFor="my-modal"
+              htmlFor={`id${todo.todo_id}`}
               className="btn btn-sm btn-error lowercase"
             >
               close
