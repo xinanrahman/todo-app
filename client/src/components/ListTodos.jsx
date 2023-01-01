@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import EditTodo from "./EditTodo";
 
 function ListTodos() {
   const [todos, setTodos] = useState([]);
@@ -46,7 +47,9 @@ function ListTodos() {
               return (
                 <tr key={todo.todo_id}>
                   <td>{todo.description}</td>
-                  <td>edit</td>
+                  <td>
+                    <EditTodo></EditTodo>
+                  </td>
                   <td>
                     <button
                       className="btn btn-outline btn-sm btn-error lowercase"
