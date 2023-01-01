@@ -1,6 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function ListTodos() {
+  const getTodos = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/todos");
+      const jsonData = await response.json();
+      console.log(jsonData);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getTodos();
+  }, []);
   return (
     <>
       <div className="overflow-x-auto flex justify-center">
@@ -13,28 +26,7 @@ function ListTodos() {
               <th className="lowercase">delete</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th>1</th>
-              <td>todo 1</td>
-              <td>button</td>
-              <td>button</td>
-            </tr>
-
-            <tr>
-              <th>2</th>
-              <td>todo 2</td>
-              <td>button</td>
-              <td>button</td>
-            </tr>
-
-            <tr>
-              <th>3</th>
-              <td>todo 3</td>
-              <td>button</td>
-              <td>button</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </>
