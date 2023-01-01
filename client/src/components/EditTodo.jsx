@@ -58,6 +58,7 @@ function EditTodo({ todo }) {
             <label
               htmlFor={`id${todo.todo_id}`}
               className="btn btn-sm btn-error lowercase"
+              onClick={() => setDescription(todo.description)}
             >
               close
             </label>
