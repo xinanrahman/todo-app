@@ -31,11 +31,14 @@ function EditTodo() {
           </div>
 
           <div className="modal-action">
+            <button className="btn btn-sm btn-outline btn-success lowercase">
+              submit
+            </button>
             <label
               htmlFor="my-modal"
-              className="btn btn-sm btn-success lowercase"
+              className="btn btn-sm btn-error lowercase"
             >
-              submit
+              close
             </label>
           </div>
         </div>
