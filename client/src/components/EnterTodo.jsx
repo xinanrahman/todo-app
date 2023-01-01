@@ -16,6 +16,7 @@ function EnterTodo() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+      window.location.reload();
     } catch (err) {
       console.error(err.message);
     }
